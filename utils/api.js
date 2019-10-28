@@ -1,50 +1,48 @@
-import { AsyncStorage } from 'react-native';
-import { decks } from './_DATA';
+import { AsyncStorage } from "react-native";
+import { decks } from "./_DATA";
 
-const DECKS_STORAGE_KEY = 'MobileFlashcards:decks';
-
+const DECKS_STORAGE_KEY = "MobileFlashcards:decks";
 
 export async function getDecks() {
-    try {
-      const storeResults = await AsyncStorage.getItem(DECKS_STORAGE_KEY);
-  
-      if (storeResults === null) {
-        AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks));
-      }
-  
-      return storeResults === null ? decks : JSON.parse(storeResults);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  try {
+    const storeResults = await AsyncStorage.getItem(DECKS_STORAGE_KEY);
 
-  export async function getDeck(id) {
-    try {
-      const storeResults = await AsyncStorage.getItem(DECKS_STORAGE_KEY);
-  
-      return JSON.parse(storeResults)[id];
-    } catch (err) {
-      console.log(err);
+    if (storeResults === null) {
+      AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks));
     }
-  }
 
-  export async function saveDeckTitleAS(title) {
-    try {
-      await AsyncStorage.mergeItem(
-        DECKS_STORAGE_KEY,
-        JSON.stringify({
-          [title]: {
-            title,
-            questions: []
-          }
-        })
-      );
-    } catch (err) {
-      console.log(err);
-    }
+    return storeResults === null ? decks : JSON.parse(storeResults);
+  } catch (err) {
+    console.log(err);
   }
+}
 
-  
+export async function getDeck(id) {
+  try {
+    const storeResults = await AsyncStorage.getItem(DECKS_STORAGE_KEY);
+
+    return JSON.parse(storeResults)[id];
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function saveDeckTitleAS(title) {
+  try {
+    await AsyncStorage.mergeItem(
+      DECKS_STORAGE_KEY,
+      JSON.stringify({
+        [title]: {
+          title,
+          questions: []
+        }
+      })
+    );
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export async function removeDeckAS(key) {
   try {
     const results = await AsyncStorage.getItem(DECKS_STORAGE_KEY);
@@ -56,7 +54,6 @@ export async function removeDeckAS(key) {
     console.log(err);
   }
 }
-
 
 export async function addCardToDeckAS(title, card) {
   try {
@@ -74,7 +71,6 @@ export async function addCardToDeckAS(title, card) {
     console.log(err);
   }
 }
-
 
 export async function resetDecks() {
   try {
