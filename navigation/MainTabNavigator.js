@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { Platform } from 'react-native';
 import * as Icon from '@expo/vector-icons';
 import {
-  createBottomTabNavigator,
   createStackNavigator
 } from 'react-navigation';
+import {
+  createBottomTabNavigator
+} from 'react-navigation-tabs';
 import DeckList from '../components/DeckList';
 import AddDeck from '../components/AddDeck';
 import DeckDetail from '../components/DeckDetail';
