@@ -4,7 +4,7 @@ import { Platform } from 'react-native';
 import * as Icon from '@expo/vector-icons';
 import {
   createStackNavigator
-} from 'react-navigation';
+} from 'react-navigation-stack';
 import {
   createBottomTabNavigator
 } from 'react-navigation-tabs';
